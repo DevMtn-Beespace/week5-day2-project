@@ -23,6 +23,11 @@ app.get('/occupations/latest', mainCtrl.getOccupationsLatest);
 app.get('/hobbies', mainCtrl.getHobbies);
 app.get('/hobbies/:type', mainCtrl.getHobbiesType);
 
+app.put('/name/:id', mainCtrl.updateName);
+app.put('/location/:id', mainCtrl.updateLocation);
+
+app.post('/hobbies', mainCtrl.setHobbies);
+app.post('/occupations', mainCtrl.setOccupations);
 
 var port = 3000
 app.listen(port, function(){

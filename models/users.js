@@ -1,9 +1,10 @@
 module.exports =
 [
   {
+    id: 1,
     name: 'Michael',
     location: 'Philly',
-    occupations: ["Daddy", "Web Dev"],
+    occupations: ["Daddy", "Web Dev", "Reading"],
     hobbies:
     [
       {
@@ -17,6 +18,7 @@ module.exports =
     ]
   }
   // {
+  //   id: 2,
   //   name: 'James',
   //   location: 'Philly',
   //   occupations: ["Biker", "Gamer"],

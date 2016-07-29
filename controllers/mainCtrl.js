@@ -15,12 +15,18 @@ module.exports = {
     for (var i = 0; i <users.length; i++) {
       if (req.query.sort === 'asc') {
         var response = users[i].occupations.sort();
-        res.json(response);
+        // response = response.sort();
+        console.log(response, "Sort");
+        return res.json(response);
       } else if (req.query.sort === 'desc') {
-        var response = users[i].occupations.reverse()
-        res.json(response);
+        var response = users[i].occupations.sort().reverse();
+        console.log(response, "reverse");
+        return res.json(response);
       } else {
+        var response = users[i].occupations[0];
+        console.log(response);
         res.json(users[i].occupations);
+
       }
     }
   },
@@ -50,5 +56,29 @@ module.exports = {
     } else {
       res.json({'bad': 'param'}) // this stinks!
     }
-  }
+  },
+  updateName: function(req, res, next) {
+    var index = parseInt(req.params.id);
+      name[index] = req.body;
+      res.json(name[index]);
+  },
+  updateLocation: function(req, res, next) {
+    var index = parseInt(req.params.id);
+    location[index] = req.body;
+    res.json(location[index]);
+  },
+  setHobbies: function(req, res, next) {
+    var index = parseInt(req.params.id);
+    for (var i = 0; i <users.length; i++) {
+      users[i].hobbies.push(req.body);
+      res.json(users[i].hobbies);
+    }
+  },
+  setOccupations: function(req, res, next) {
+    var index = parseInt(req.params.id);
+    for (var i = 0; i <users.length; i++) {
+      users[i].occupations.push(req.body);
+      res.json(users[i].occupations);
+    }
+  },
 }
