@@ -16,22 +16,22 @@ module.exports =
         "type": "past"
       }
     ]
+  },
+  {
+    id: 2,
+    name: 'James',
+    location: 'Philly',
+    occupations: ["Biker", "Gamer"],
+    hobbies:
+    [
+      {
+        "name": "Cards",
+        "type": "current"
+      },
+      {
+        "name": "Soccer",
+        "type": "past"
+      }
+    ]
   }
-  // {
-  //   id: 2,
-  //   name: 'James',
-  //   location: 'Philly',
-  //   occupations: ["Biker", "Gamer"],
-  //   hobbies:
-  //   [
-  //     {
-  //       "name": "Cards",
-  //       "type": "current"
-  //     },
-  //     {
-  //       "name": "Soccer",
-  //       "type": "past"
-  //     }
-  //   ]
-  // }
 ]

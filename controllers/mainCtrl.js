@@ -2,38 +2,42 @@ var users = require('../models/users');
 
 module.exports = {
   getName: function(req, res, next){
+    var response = [];
     for (var i = 0; i <users.length; i++) {
-      res.json(users[i].name);
+      response.push(users[i].name);
     }
+    res.json(response);
   },
   getLocation: function(req, res, next) {
+    var response = [];
     for (var i = 0; i <users.length; i++) {
-      res.json(users[i].location);
+      response.push(users[i].location);
     }
+    res.json(response);
   },
   getOccupations: function(req, res, next){
     for (var i = 0; i <users.length; i++) {
       if (req.query.sort === 'asc') {
         var response = users[i].occupations.sort();
-        // response = response.sort();
         console.log(response, "Sort");
         return res.json(response);
       } else if (req.query.sort === 'desc') {
         var response = users[i].occupations.sort().reverse();
-        console.log(response, "reverse");
+        console.log(response, "Reverse");
         return res.json(response);
       } else {
         var response = users[i].occupations[0];
         console.log(response);
         res.json(users[i].occupations);
-
       }
     }
   },
   getOccupationsLatest: function(req, res, next){
+    var response = [];
     for (var i = 0; i <users.length; i++) {
-      res.json(users[i].occupations[users[i].occupations.length-1]);
+      response.push(users[i].occupations[users[i].occupations.length-1]);
     }
+          res.json(response);
   },
   getHobbies: function(req, res, next) {
     for (var i = 0; i <users.length; i++) {
@@ -59,8 +63,11 @@ module.exports = {
   },
   updateName: function(req, res, next) {
     var index = parseInt(req.params.id);
-      name[index] = req.body;
-      res.json(name[index]);
+    for (var i = 0; i<users.length; i++) {
+      users[i]["name"] = req.body;
+      console.log(users[i]["name"]);
+    }
+    res.json(req.body);
   },
   updateLocation: function(req, res, next) {
     var index = parseInt(req.params.id);
@@ -71,14 +78,14 @@ module.exports = {
     var index = parseInt(req.params.id);
     for (var i = 0; i <users.length; i++) {
       users[i].hobbies.push(req.body);
-      res.json(users[i].hobbies);
     }
+    res.json(users);
   },
   setOccupations: function(req, res, next) {
     var index = parseInt(req.params.id);
     for (var i = 0; i <users.length; i++) {
       users[i].occupations.push(req.body);
-      res.json(users[i].occupations);
     }
+    res.json(users);
   },
 }
